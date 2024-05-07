@@ -65,8 +65,7 @@ export default function MovieDetails() {
       setActiveTab(type);
       void fetchDetails(id, type);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, type, error]);
+  }, [id, type, error, setActiveTab, navigate, fetchDetails]);
 
   const {
     title,
