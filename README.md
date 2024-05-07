@@ -3,12 +3,17 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React JS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
+An application that shows top 10 rated movies/tv shows, allow users to search for specific movie/tv show and view detailed information.
+
 A [Vite](https://vitejs.dev/) application bootstrapped with [`npm create vite@latest`](https://vitejs.dev/guide/#scaffolding-your-first-vite-project), serving the moviely application.
+
+![](https://github.com/vladotimic/moviely-app/preview.gif)
 
 ## Features
 
 - Loads Top 10 Rated Movies / TV Shows, depending which tab you've selected.
 - Search for Movies / TV Shows.
+- App has cool card hover animations.
 - Project has Prettier and ESLint configuration for better formating and linting.
 
 ## Requirements
@@ -43,7 +48,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Contributing
 
-1. Fork it (<https://github.com/vladotimic/car-dealer-app/fork>)
+1. Fork it (<https://github.com/vladotimic/moviely-app/fork>)
 2. Create your feature branch (`git switch -c mva-1-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin mva-1-feature`)
