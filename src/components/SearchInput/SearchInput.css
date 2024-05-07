@@ -1,0 +1,17 @@
+.search-input__base {
+  cursor: text;
+}
+
+.search-input__field {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--bg-color);
+  border: solid 1px var(--primary-main);
+  border-radius: 0.25rem;
+}
+.search-input__field:focus {
+  -webkit-box-shadow: var(--input-shadow);
+  box-shadow: var(--input-shadow);
+  outline: 0;
+}

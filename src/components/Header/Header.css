@@ -1,0 +1,61 @@
+.header__root {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 40rem;
+  background: url('../../assets/header-cover.jpg') center top/cover no-repeat;
+}
+
+.header__content {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  padding-inline: 0.8rem;
+  z-index: 2;
+}
+
+.header__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(33, 33, 33);
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(rgba(33, 33, 33, 1)),
+    to(rgba(0, 0, 0, 0.5018382352941176))
+  );
+  background: -o-linear-gradient(
+    bottom,
+    rgba(33, 33, 33, 1) 0%,
+    rgba(0, 0, 0, 0.5018382352941176) 100%
+  );
+  background: linear-gradient(
+    360deg,
+    rgba(33, 33, 33, 1) 0%,
+    rgba(0, 0, 0, 0.5018382352941176) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#212121",endColorstr="#000000",GradientType=1);
+  z-index: 1;
+}
+
+.header__tabs > button:not(:first-of-type) {
+  margin-left: 0.75rem;
+}
+
+.header__search {
+  margin-top: 1rem;
+}
