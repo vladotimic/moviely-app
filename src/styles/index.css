@@ -1,0 +1,131 @@
+:root {
+  --font-family: 'Inter', sans-serif;
+  --h1: 3rem;
+  --h2: 2.5rem;
+  --h3: 2rem;
+  --h4: 1.7rem;
+  --h5: 1.45rem;
+  --h6: 1.2rem;
+  --body: 1rem;
+  --caption: 0.8rem;
+
+  --primary-main: #f97300;
+  --primary-dark: #ae5100;
+  --primary-light: #fb9d4b;
+  --secondary-main: #dfe0df;
+  --imdb-yellow: #f5c518;
+  --bg-color: #212121;
+  --white: #ffffff;
+  --black: #000000;
+  --card-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.5);
+  --input-shadow: 0px 0px 0px 0.2rem hsl(28 96% 64% / 0.38);
+
+  --transition: all 0.15s ease-in-out;
+  --transition-slow: all 0.3s ease-in-out;
+}
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Global */
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--body);
+  font-weight: 400;
+  color: var(--white);
+  background-color: var(--bg-color);
+}
+
+#root {
+  height: 100vh;
+  width: 100%;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0.5rem;
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-main);
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 0.8rem;
+}
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
