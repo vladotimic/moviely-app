@@ -38,10 +38,10 @@ VITE_ACCESS_TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYWQzMjExNTQyNTVkN2M0YjU2N2ZjZ
 VITE_IMAGE_URL_ROOT=https://image.tmdb.org/t/p/original
 ```
 
-Next, run the development server by running command below in your terminal from the `root` folder:
+Next, run the command that builds and serves the application in the browser:
 
 ```bash
-npm run dev
+npm run prod
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
