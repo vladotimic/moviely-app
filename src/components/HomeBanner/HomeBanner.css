@@ -1,4 +1,4 @@
-.header__root {
+.banner__root {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12,10 +12,10 @@
   justify-content: center;
   width: 100%;
   height: 40rem;
-  background: url('../../assets/header-cover.jpg') center top/cover no-repeat;
+  background: url('../../assets/banner-cover.jpg') center top/cover no-repeat;
 }
 
-.header__content {
+.banner__content {
   position: relative;
   width: 100%;
   max-width: 40rem;
@@ -24,7 +24,7 @@
   z-index: 2;
 }
 
-.header__overlay {
+.banner__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -52,10 +52,10 @@
   z-index: 1;
 }
 
-.header__tabs > button:not(:first-of-type) {
+.banner__tabs > button:not(:first-of-type) {
   margin-left: 0.75rem;
 }
 
-.header__search {
+.banner__search {
   margin-top: 1rem;
 }

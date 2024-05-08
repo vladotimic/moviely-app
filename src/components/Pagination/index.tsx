@@ -10,8 +10,6 @@ interface IPaginationHooks extends IPagination {
 
 export interface IPaginationProps extends IPagination {
   setPage: (page: number) => void;
-  nextPage: () => void;
-  prevPage: () => void;
 }
 
 export const DOTS = '...';
@@ -83,13 +81,7 @@ const usePagination = ({
   return paginationRange;
 };
 
-function Pagination({
-  currentPage,
-  pageSize,
-  setPage,
-  nextPage,
-  prevPage,
-}: IPaginationProps) {
+function Pagination({ currentPage, pageSize, setPage }: IPaginationProps) {
   const paginationRange = usePagination({
     currentPage,
     pageSize,
@@ -98,6 +90,14 @@ function Pagination({
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
+
+  const onNext = () => {
+    setPage(currentPage + 1);
+  };
+
+  const onPrevious = () => {
+    setPage(currentPage - 1);
+  };
 
   const lastPage = paginationRange[paginationRange.length - 1];
 
@@ -111,7 +111,7 @@ function Pagination({
           disabled: currentPage === 1,
         })}
         aria-label='Back'
-        onClick={prevPage}
+        onClick={onPrevious}
       >
         <IoIosArrowBack />
       </button>
@@ -146,7 +146,7 @@ function Pagination({
           disabled: currentPage === lastPage,
         })}
         aria-label='Next'
-        onClick={nextPage}
+        onClick={onNext}
       >
         <IoIosArrowForward />
       </button>

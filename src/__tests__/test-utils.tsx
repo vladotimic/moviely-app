@@ -1,10 +1,9 @@
 import React, { ReactElement } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { AppContextProvider, IAppContext } from '@/context';
+import { AppContextProvider } from '@/context';
 
 interface IExtendedRenderOptions extends RenderOptions {
-  context?: IAppContext;
   initialEntries?: string[];
 }
 
@@ -15,10 +14,7 @@ const customRender = (
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
       <MemoryRouter initialEntries={options?.initialEntries ?? ['/']}>
-        <AppContextProvider context={options?.context}>
-          {children}
-        </AppContextProvider>
-        ;
+        <AppContextProvider>{children}</AppContextProvider>;
       </MemoryRouter>
     );
   }

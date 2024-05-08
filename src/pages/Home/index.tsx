@@ -6,7 +6,7 @@ import Loader from '@/components/Loader';
 import Pagination from '@/components/Pagination';
 import './Home.css';
 
-const Header = lazy(() => import('@/components/Header'));
+const HomeBanner = lazy(() => import('@/components/HomeBanner'));
 const Card = lazy(() => import('@/components/Card'));
 
 export default function Home() {
@@ -27,8 +27,6 @@ export default function Home() {
     loadTopRatedData,
     resetDetails,
     setPage,
-    nextPage,
-    prevPage,
   } = useAppContext();
 
   useEffect(() => {
@@ -54,7 +52,8 @@ export default function Home() {
 
   return (
     <Suspense fallback={<Loader />}>
-      <Header />
+      <HomeBanner />
+
       <section
         className='container card-list__section card-grid__container'
         style={{
@@ -101,8 +100,6 @@ export default function Home() {
             currentPage={currentPage}
             pageSize={pageSize}
             setPage={setPage}
-            nextPage={nextPage}
-            prevPage={prevPage}
           />
         </div>
       </section>
