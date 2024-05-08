@@ -40,4 +40,108 @@ describe('Home Page', () => {
     expect(listOfMovies.length).toBe(10);
     expect(movie).toBeInTheDocument();
   });
+
+  it('should trigger search after "ave" input value for tv shows', async () => {
+    render(<Home />);
+
+    const searchInput = screen.getByPlaceholderText(/spider man/i);
+    fireEvent.change(searchInput, { target: { value: 'ave' } });
+
+    const firstCard = await screen.findByText('Second Avenue');
+
+    expect(firstCard).toBeInTheDocument();
+    expect(firstCard).toBeVisible();
+  });
+
+  it('should trigger search after "ave" input value for movies', async () => {
+    render(<Home />);
+
+    const movieTab = screen.getByRole('button', { name: /movie/i });
+    fireEvent.click(movieTab);
+
+    const searchInput = screen.getByPlaceholderText(/spider man/i);
+    fireEvent.change(searchInput, { target: { value: 'ave' } });
+
+    const firstCard = await screen.findByText('Bird');
+
+    expect(firstCard).toBeInTheDocument();
+    expect(firstCard).toBeVisible();
+  });
+
+  it('should get six total page results for the avengers movie query', async () => {
+    render(<Home />);
+
+    const movieTab = screen.getByRole('button', { name: /movie/i });
+    fireEvent.click(movieTab);
+
+    const searchInput = screen.getByPlaceholderText(/spider man/i);
+    fireEvent.change(searchInput, { target: { value: 'avengers' } });
+
+    const totalPageResults = await screen.findByText(6);
+
+    expect(totalPageResults).toHaveTextContent('6');
+    expect(totalPageResults).toBeVisible();
+    expect(totalPageResults.parentElement).toHaveAttribute(
+      'data-testid',
+      'pagination-component',
+    );
+  });
+
+  it('should have avengers: endgame for the avengers movie query on the first page', async () => {
+    render(<Home />);
+
+    const movieTab = screen.getByRole('button', { name: /movie/i });
+    fireEvent.click(movieTab);
+
+    const searchInput = screen.getByPlaceholderText(/spider man/i);
+    fireEvent.change(searchInput, { target: { value: 'avengers' } });
+
+    const cardElement = await screen.findByText(/avengers: endgame/i);
+
+    expect(cardElement).toBeInTheDocument();
+    expect(cardElement).toBeVisible();
+  });
+
+  it('should have avenger x for the avengers movie query on the fourth page', async () => {
+    render(<Home />);
+
+    const movieTab = screen.getByRole('button', { name: /movie/i });
+    fireEvent.click(movieTab);
+
+    const searchInput = screen.getByPlaceholderText(/spider man/i);
+    fireEvent.change(searchInput, { target: { value: 'avengers' } });
+
+    const buttonElement = await screen.findByText(4);
+    fireEvent.click(buttonElement);
+
+    const cardElement = await screen.findByText(/avenger x/i);
+
+    expect(cardElement).toBeInTheDocument();
+    expect(cardElement).toBeVisible();
+  });
+
+  it('should render there is no result for "cdda" movie search term', async () => {
+    render(<Home />);
+
+    const movieTab = screen.getByRole('button', { name: /movie/i });
+    fireEvent.click(movieTab);
+
+    const searchInput = screen.getByPlaceholderText(/spider man/i);
+    fireEvent.change(searchInput, { target: { value: 'cdda' } });
+
+    const textElement = await screen.findByText(/there is no results/i);
+
+    expect(textElement).toBeInTheDocument();
+  });
+
+  it('should render there is no result for "cdda" tv show search term', async () => {
+    render(<Home />);
+
+    const searchInput = screen.getByPlaceholderText(/spider man/i);
+    fireEvent.change(searchInput, { target: { value: 'cdda' } });
+
+    const textElement = await screen.findByText(/there is no results/i);
+
+    expect(textElement).toBeInTheDocument();
+  });
 });
