@@ -11,6 +11,7 @@ import { getBySearchQuery, getTopRated, getById } from '@/services/movie';
 import reducer from './reducer';
 
 const initialState: IState = {
+  topRated: undefined,
   data: [],
   details: undefined,
   activeTab: 'tv',
@@ -24,6 +25,7 @@ const initialState: IState = {
 
 interface IAppContext extends IState {
   fetchTopRated: (cache: IMovie[]) => Promise<void>;
+  loadTopRatedData: () => void;
   fetchSearch: (term: string, cache: IQueryResults) => Promise<void>;
   fetchDetails: (id: string, tab: ActiveTab) => Promise<void>;
   setActiveTab: (tab: ActiveTab) => void;
@@ -60,6 +62,10 @@ export function AppContextProvider({
     },
     [activeTab],
   );
+
+  const loadTopRatedData = useCallback(() => {
+    dispatch({ type: ActionType.LOAD_TOP_RATED_DATA });
+  }, []);
 
   const fetchSearch = useCallback(
     async (query: string, cache: IQueryResults) => {
@@ -114,6 +120,7 @@ export function AppContextProvider({
     () => ({
       ...state,
       fetchTopRated,
+      loadTopRatedData,
       fetchSearch,
       fetchDetails,
       setActiveTab,
@@ -124,6 +131,7 @@ export function AppContextProvider({
     [
       state,
       fetchTopRated,
+      loadTopRatedData,
       fetchSearch,
       fetchDetails,
       setActiveTab,

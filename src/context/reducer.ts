@@ -11,11 +11,17 @@ function reducer(state: IState, action: Action): IState {
     };
   }
   if (type === ActionType.GET_TOP_RATED_SUCCESS) {
+    const { activeTab } = state;
     const list = action.payload.slice(0, 10);
+
     return {
       ...state,
       loading: false,
       error: false,
+      topRated: {
+        ...state.topRated,
+        [activeTab]: list,
+      },
       data: list,
       currentPage: 1,
       pageSize: 1,
@@ -27,6 +33,18 @@ function reducer(state: IState, action: Action): IState {
       data: [],
       loading: false,
       error: true,
+    };
+  }
+  if (type === ActionType.LOAD_TOP_RATED_DATA) {
+    const { activeTab, topRated } = state;
+
+    return {
+      ...state,
+      ...(topRated && {
+        data: topRated[activeTab] ?? [],
+      }),
+      currentPage: 1,
+      pageSize: 1,
     };
   }
   if (type === ActionType.QUERY_DATA_BEGIN) {

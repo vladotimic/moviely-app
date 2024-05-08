@@ -14,6 +14,7 @@ export default function Home() {
   const state = location.state as ILocationState;
 
   const {
+    topRated,
     data,
     loading,
     error,
@@ -23,16 +24,30 @@ export default function Home() {
     currentPage,
     pageSize,
     fetchTopRated,
+    loadTopRatedData,
     resetDetails,
   } = useAppContext();
 
   useEffect(() => {
     if (isQuery) return;
 
-    resetDetails();
-    void fetchTopRated(state?.data);
     window.history.replaceState(null, '');
-  }, [isQuery, activeTab, fetchTopRated, resetDetails, state]);
+    resetDetails();
+
+    if (topRated && activeTab in topRated) {
+      loadTopRatedData();
+      return;
+    }
+    void fetchTopRated(state?.data);
+  }, [
+    isQuery,
+    activeTab,
+    fetchTopRated,
+    resetDetails,
+    state,
+    topRated,
+    loadTopRatedData,
+  ]);
 
   return (
     <Suspense fallback={<Loader />}>

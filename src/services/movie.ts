@@ -38,7 +38,6 @@ type DetailsResult = {
 interface ITopRatedResults {
   page: number;
   total_pages: number;
-  total_results: number;
   results: TopRatedResults[];
 }
 
@@ -72,12 +71,7 @@ export async function getBySearchQuery(
     },
   });
 
-  const {
-    page: currentPage,
-    results,
-    total_pages: pageSize,
-    total_results: totalCount,
-  } = response.data;
+  const { page: currentPage, results, total_pages: pageSize } = response.data;
 
   const data = results.map((item: TopRatedResults) => {
     const { id, poster_path: poster } = item;
@@ -96,7 +90,6 @@ export async function getBySearchQuery(
     data,
     currentPage,
     pageSize,
-    totalCount,
   };
 }
 

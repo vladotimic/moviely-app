@@ -10,12 +10,10 @@
   transition: var(--transition);
 }
 
-@media (hover: hover) {
-  .button:hover {
-    color: var(--white);
-    background-color: var(--primary-main);
-    border: solid 1px var(--primary-main);
-  }
+.button:hover {
+  color: var(--white);
+  background-color: var(--primary-main);
+  border: solid 1px var(--primary-main);
 }
 
 .button--active,

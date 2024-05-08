@@ -33,7 +33,8 @@ function SearchInput() {
     const search = setTimeout(() => {
       void fetchSearch(searchTerm, {
         data: state?.data,
-        currentPage,
+        pageSize: state?.pageSize,
+        currentPage: state?.currentPage ?? currentPage,
       });
     }, 1000);
 

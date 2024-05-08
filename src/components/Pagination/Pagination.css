@@ -40,21 +40,21 @@
   pointer-events: none;
 }
 
-@media (hover: hover) {
-  .pagination-item.dots:hover {
-    color: var(--black);
-    background-color: var(--secondary-main);
-    border: solid 1px var(--secondary-main);
-    cursor: default;
-  }
-  .pagination-item:hover {
-    color: var(--white);
-    background-color: var(--primary-light);
-    border: solid 1px var(--primary-light);
-    cursor: pointer;
-  }
-  .pagination-item.disabled:hover {
-    background-color: transparent;
-    cursor: default;
-  }
+.pagination-item.dots:hover {
+  color: var(--black);
+  background-color: var(--secondary-main);
+  border: solid 1px var(--secondary-main);
+  cursor: default;
+}
+
+.pagination-item:hover {
+  color: var(--white);
+  background-color: var(--primary-light);
+  border: solid 1px var(--primary-light);
+  cursor: pointer;
+}
+
+.pagination-item.disabled:hover {
+  background-color: transparent;
+  cursor: default;
 }

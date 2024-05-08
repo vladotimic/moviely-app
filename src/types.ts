@@ -38,8 +38,11 @@ export interface IQueryResults extends IPagination {
 }
 
 export interface IState extends IPagination {
+  topRated?: {
+    [k in ActiveTab]?: IMovie[];
+  };
   data: [] | IMovie[];
-  details: IMovieDetails | undefined;
+  details?: IMovieDetails;
   activeTab: ActiveTab;
   searchTerm: string;
   isQuery: boolean;
@@ -51,6 +54,7 @@ export enum ActionType {
   GET_TOP_RATED_BEGIN,
   GET_TOP_RATED_SUCCESS,
   GET_TOP_RATED_ERROR,
+  LOAD_TOP_RATED_DATA,
   QUERY_DATA_BEGIN,
   QUERY_DATA_SUCCESS,
   QUERY_DATA_ERROR,
@@ -67,6 +71,7 @@ export type Action =
   | { type: ActionType.GET_TOP_RATED_BEGIN }
   | { type: ActionType.GET_TOP_RATED_SUCCESS; payload: IMovie[] }
   | { type: ActionType.GET_TOP_RATED_ERROR }
+  | { type: ActionType.LOAD_TOP_RATED_DATA }
   | { type: ActionType.QUERY_DATA_BEGIN }
   | { type: ActionType.QUERY_DATA_SUCCESS; payload: IQueryResults }
   | { type: ActionType.QUERY_DATA_ERROR }

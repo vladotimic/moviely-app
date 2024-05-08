@@ -13,14 +13,12 @@
   animation: slide-in 0.3s ease-in-out;
 }
 
-@media (hover: hover) {
-  .card__root:hover {
-    -webkit-transform: translateY(-0.5rem);
-    -ms-transform: translateY(-0.5rem);
-    transform: translateY(-0.5rem);
-    -webkit-box-shadow: var(--card-shadow);
-    box-shadow: var(--card-shadow);
-  }
+.card__root:hover {
+  -webkit-transform: translateY(-0.5rem);
+  -ms-transform: translateY(-0.5rem);
+  transform: translateY(-0.5rem);
+  -webkit-box-shadow: var(--card-shadow);
+  box-shadow: var(--card-shadow);
 }
 
 .card__media {
