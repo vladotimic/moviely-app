@@ -7,8 +7,6 @@ An application that shows top 10 rated movies/tv shows, allow users to search fo
 
 A [Vite](https://vitejs.dev/) application bootstrapped with [`npm create vite@latest`](https://vitejs.dev/guide/#scaffolding-your-first-vite-project), serving the moviely application.
 
-![](preview.gif)
-
 ## Features
 
 - Loads Top 10 Rated Movies / TV Shows, depending which tab you've selected.

@@ -23,7 +23,7 @@ const initialState: IState = {
   pageSize: 1,
 };
 
-interface IAppContext extends IState {
+export interface IAppContext extends IState {
   fetchTopRated: (cache: IMovie[]) => Promise<void>;
   loadTopRatedData: () => void;
   fetchSearch: (term: string, cache: IQueryResults) => Promise<void>;
@@ -32,14 +32,18 @@ interface IAppContext extends IState {
   setSearchTerm: (term: string) => void;
   resetDetails: () => void;
   setPage: (page: number) => void;
+  nextPage: () => void;
+  prevPage: () => void;
 }
 
 const AppContext = createContext<IAppContext | null>(null);
 
 export function AppContextProvider({
   children,
+  context,
 }: {
   children: React.ReactNode;
+  context?: IAppContext;
 }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -115,6 +119,14 @@ export function AppContextProvider({
     },
     [navigate],
   );
+  const nextPage = useCallback(() => {
+    navigate('', { state: null, replace: true });
+    dispatch({ type: ActionType.NEXT_PAGE });
+  }, [navigate]);
+  const prevPage = useCallback(() => {
+    navigate('', { state: null, replace: true });
+    dispatch({ type: ActionType.PREV_PAGE });
+  }, [navigate]);
 
   const value = useMemo(
     () => ({
@@ -127,6 +139,8 @@ export function AppContextProvider({
       setSearchTerm,
       resetDetails,
       setPage,
+      nextPage,
+      prevPage,
     }),
     [
       state,
@@ -138,10 +152,16 @@ export function AppContextProvider({
       setSearchTerm,
       resetDetails,
       setPage,
+      nextPage,
+      prevPage,
     ],
   );
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={value ?? context}>
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 export const useAppContext = () => {

@@ -65,6 +65,8 @@ export enum ActionType {
   SET_SEARCH_TERM,
   RESET_DETAILS,
   SET_PAGE,
+  NEXT_PAGE,
+  PREV_PAGE,
 }
 
 export type Action =
@@ -81,4 +83,6 @@ export type Action =
   | { type: ActionType.SET_TAB; payload: ActiveTab }
   | { type: ActionType.SET_SEARCH_TERM; payload: string }
   | { type: ActionType.RESET_DETAILS }
-  | { type: ActionType.SET_PAGE; payload: number };
+  | { type: ActionType.SET_PAGE; payload: number }
+  | { type: ActionType.NEXT_PAGE }
+  | { type: ActionType.PREV_PAGE };

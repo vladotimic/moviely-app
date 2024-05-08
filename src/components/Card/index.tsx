@@ -9,14 +9,14 @@ type CardState = Pick<
   'data' | 'activeTab' | 'searchTerm' | 'currentPage' | 'pageSize'
 >;
 
-interface CardProps extends IMovie {
+export interface ICardProps extends IMovie {
   activeTab: ActiveTab;
-  state: CardState;
+  state?: CardState;
 }
 
 const URL = String(import.meta.env.VITE_IMAGE_URL_ROOT);
 
-function Card({ id, title, activeTab, poster, date, state }: CardProps) {
+function Card({ id, title, activeTab, poster, date, state }: ICardProps) {
   const releaseDate = dayjs(date).format('YYYY');
 
   return (
@@ -24,6 +24,7 @@ function Card({ id, title, activeTab, poster, date, state }: CardProps) {
       to={`/details/${activeTab}/${id}`}
       state={state}
       className='card__root'
+      data-testid='card-element'
     >
       <div className='card__media'>
         {poster ? (

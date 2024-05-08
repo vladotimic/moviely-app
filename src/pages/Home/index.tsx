@@ -26,6 +26,9 @@ export default function Home() {
     fetchTopRated,
     loadTopRatedData,
     resetDetails,
+    setPage,
+    nextPage,
+    prevPage,
   } = useAppContext();
 
   useEffect(() => {
@@ -94,7 +97,13 @@ export default function Home() {
         )}
 
         <div className='home__pagination'>
-          <Pagination />
+          <Pagination
+            currentPage={currentPage}
+            pageSize={pageSize}
+            setPage={setPage}
+            nextPage={nextPage}
+            prevPage={prevPage}
+          />
         </div>
       </section>
     </Suspense>

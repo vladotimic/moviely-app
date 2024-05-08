@@ -1,12 +1,17 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { useAppContext } from '@/context';
 import { IPagination } from '@/types';
 import './Pagination.css';
 
 interface IPaginationHooks extends IPagination {
   siblingCount?: number;
+}
+
+export interface IPaginationProps extends IPagination {
+  setPage: (page: number) => void;
+  nextPage: () => void;
+  prevPage: () => void;
 }
 
 export const DOTS = '...';
@@ -78,9 +83,13 @@ const usePagination = ({
   return paginationRange;
 };
 
-function Pagination() {
-  const { currentPage, pageSize, setPage } = useAppContext();
-
+function Pagination({
+  currentPage,
+  pageSize,
+  setPage,
+  nextPage,
+  prevPage,
+}: IPaginationProps) {
   const paginationRange = usePagination({
     currentPage,
     pageSize,
@@ -90,24 +99,19 @@ function Pagination() {
     return null;
   }
 
-  const onNext = () => {
-    setPage(currentPage + 1);
-  };
-
-  const onPrevious = () => {
-    setPage(currentPage - 1);
-  };
-
   const lastPage = paginationRange[paginationRange.length - 1];
 
   return (
-    <div className={classNames('pagination-container')}>
+    <div
+      className={classNames('pagination-container')}
+      data-testid='pagination-component'
+    >
       <button
         className={classNames('pagination-item', {
           disabled: currentPage === 1,
         })}
         aria-label='Back'
-        onClick={onPrevious}
+        onClick={prevPage}
       >
         <IoIosArrowBack />
       </button>
@@ -142,7 +146,7 @@ function Pagination() {
           disabled: currentPage === lastPage,
         })}
         aria-label='Next'
-        onClick={onNext}
+        onClick={nextPage}
       >
         <IoIosArrowForward />
       </button>

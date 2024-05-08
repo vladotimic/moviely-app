@@ -122,6 +122,18 @@ function reducer(state: IState, action: Action): IState {
       currentPage: action.payload,
     };
   }
+  if (type === ActionType.NEXT_PAGE) {
+    return {
+      ...state,
+      currentPage: state.currentPage + 1,
+    };
+  }
+  if (type === ActionType.PREV_PAGE) {
+    return {
+      ...state,
+      currentPage: state.currentPage - 1,
+    };
+  }
   return { ...state };
 }
 export default reducer;

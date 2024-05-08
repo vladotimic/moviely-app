@@ -2,7 +2,7 @@ import './Loader.css';
 
 function Loader() {
   return (
-    <div className='lds-ring'>
+    <div data-testid='loader-component' className='lds-ring'>
       <div />
       <div />
       <div />

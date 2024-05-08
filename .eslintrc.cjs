@@ -37,7 +37,7 @@ module.exports = {
     'import/extensions': [
       'error',
       'never',
-      { ts: 'never', tsx: 'never', svg: 'always' },
+      { ts: 'never', tsx: 'never', svg: 'always', json: 'always' },
     ],
     'no-console': [
       'error',
