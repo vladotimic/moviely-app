@@ -11,7 +11,8 @@ A [Vite](https://vitejs.dev/) application bootstrapped with [`npm create vite@la
 
 - Loads Top 10 Rated Movies / TV Shows, depending which tab you've selected.
 - Search for Movies / TV Shows.
-- App has cool card hover animations.
+- View detailed information about specific movie / tv show that you want to watch.
+- App has some cool hover animations and transitions.
 - Project has Prettier and ESLint configuration for better formating and linting.
 
 ## Requirements
@@ -43,6 +44,20 @@ npm run prod
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Tests
+
+In this application there are some unit and integration tests written in `vitest` and `react-testing-library` located inside `src/__tests__` folder. You can run these tests by running this command:
+
+```bash
+npm run test
+```
+
+In case you want to see these tests in interactive UI in your browser, `vitest` enables that via `@vitest/ui` package, and you can see these tests in your browser by running:
+
+```bash
+npm run test:ui
+```
 
 ## Contributing
 
