@@ -28,12 +28,12 @@ Install the project dependencies by running the following command in the root of
 npm install
 ```
 
-After successful installation, create `.env` file in project `root` folder and copy `environment` variables from `.env.example` file into `.env` file:
+After successful installation, create `.env` file in project `root` folder next to `.env.example` file and copy `environment` variables from `.env.example` file into that `.env` file. This is necessary for the application to run and fetch the data from the TMDB API.
 
 ```.env
 VITE_API_ROOT_URL=https://api.themoviedb.org/3
 VITE_ACCESS_TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYWQzMjExNTQyNTVkN2M0YjU2N2ZjZDk1ODlkNGRlZSIsInN1YiI6IjYwOGMwNDJjNWI0ZmVkMDA0MWUzNTc1NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gQD1PaKyE7obHLo_3asYWCuGI-jBPWaBCPKTDzgKXH8
-VITE_IMAGE_URL_ROOT=https://image.tmdb.org/t/p/original
+VITE_IMAGE_URL_ROOT=https://image.tmdb.org/t/p
 ```
 
 Next, run the command that builds and serves the application in the browser:

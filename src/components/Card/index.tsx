@@ -29,7 +29,7 @@ function Card({ id, title, activeTab, poster, date, state }: ICardProps) {
       <div className='card__media'>
         {poster ? (
           <img
-            src={`${URL}${poster}`}
+            src={`${URL}/w500/${poster}`}
             alt='Media poster asset'
             className='card__image'
           />

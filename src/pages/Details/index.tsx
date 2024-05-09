@@ -40,7 +40,11 @@ function formatRuntime(runtime: number | undefined) {
 
 function DetailsCoverImage({ src }: IDetailsCoverImageProps) {
   return src ? (
-    <img src={`${URL}${src}`} alt='TV/Movie Cover' className='cover__image' />
+    <img
+      src={`${URL}/original/${src}`}
+      alt='TV/Movie Cover'
+      className='cover__image'
+    />
   ) : (
     <BrokenImage cover />
   );
@@ -108,7 +112,7 @@ export default function DetailsPage() {
             <figure className='details__poster'>
               {poster ? (
                 <img
-                  src={`${URL}${poster}`}
+                  src={`${URL}/w500/${poster}`}
                   alt='TV/Movie Poster'
                   className='poster__image'
                 />
