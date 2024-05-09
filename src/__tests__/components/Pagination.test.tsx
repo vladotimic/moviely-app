@@ -5,8 +5,6 @@ const pageProps: IPaginationProps = {
   currentPage: 1,
   pageSize: 10,
   setPage: () => {},
-  nextPage: () => {},
-  prevPage: () => {},
 };
 
 describe('Pagination Component', () => {
