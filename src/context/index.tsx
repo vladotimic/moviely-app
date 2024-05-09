@@ -5,7 +5,6 @@ import React, {
   useMemo,
   useCallback,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { IState, IMovie, ActionType, ActiveTab, IQueryResults } from '@/types';
 import { getBySearchQuery, getTopRated, getById } from '@/services/movie';
 import reducer from './reducer';
@@ -42,8 +41,6 @@ export function AppContextProvider({
   children: React.ReactNode;
 }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const navigate = useNavigate();
 
   const { activeTab, currentPage } = state;
 
@@ -108,13 +105,9 @@ export function AppContextProvider({
     dispatch({ type: ActionType.RESET_DETAILS });
   }, []);
 
-  const setPage = useCallback(
-    (page: number) => {
-      navigate('', { state: null, replace: true });
-      dispatch({ type: ActionType.SET_PAGE, payload: page });
-    },
-    [navigate],
-  );
+  const setPage = useCallback((page: number) => {
+    dispatch({ type: ActionType.SET_PAGE, payload: page });
+  }, []);
 
   const value = useMemo(
     () => ({

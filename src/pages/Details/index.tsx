@@ -5,8 +5,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { FaImdb } from 'react-icons/fa';
 import { useAppContext } from '@/context';
 import { ActiveTab, IGenres, ILocationState } from '@/types';
-import BrokenImage from '@/components/BrokenImage';
-import Loader from '@/components/Loader';
+import { BrokenImage, Loader } from '@/components';
 import './Details.css';
 
 interface IDetailsParams {
@@ -47,7 +46,7 @@ function DetailsCoverImage({ src }: IDetailsCoverImageProps) {
   );
 }
 
-export default function MovieDetails() {
+export default function DetailsPage() {
   const { type, id } = useParams<IDetailsParams>();
   const navigate = useNavigate();
   const location = useLocation();
@@ -81,6 +80,7 @@ export default function MovieDetails() {
 
   const genres = formatGenres(details?.genres);
   const runtimeLength = formatRuntime(runtime);
+  const releaseDate = dayjs(date).format('YYYY');
 
   return (
     <section className='details__root'>
@@ -92,7 +92,7 @@ export default function MovieDetails() {
             </Link>
           </div>
 
-          <div>
+          <figure>
             {trailer ? (
               <iframe
                 title='YouTube Video Trailer'
@@ -102,10 +102,10 @@ export default function MovieDetails() {
             ) : (
               <DetailsCoverImage src={cover} />
             )}
-          </div>
+          </figure>
 
           <div className='details__info'>
-            <div className='details__poster'>
+            <figure className='details__poster'>
               {poster ? (
                 <img
                   src={`${URL}${poster}`}
@@ -115,14 +115,15 @@ export default function MovieDetails() {
               ) : (
                 <BrokenImage />
               )}
-            </div>
+            </figure>
 
             <div className='details__content-info'>
               {title && <h2 className='details__title'>{title}</h2>}
-              {date && (
-                <p className='details__date'>{dayjs(date).format('YYYY')}</p>
-              )}
+
+              {date && <p className='details__date'>{releaseDate}</p>}
+
               {genres && <p className='details__genres'>{genres}</p>}
+
               {imdb && (
                 <a
                   href={`https://www.imdb.com/title/${imdb}`}
@@ -134,16 +135,19 @@ export default function MovieDetails() {
                   <FaImdb /> &nbsp;
                 </a>
               )}
+
               {status && (
                 <p className='details__status'>
                   Status: <span>{status}</span>
                 </p>
               )}
+
               {runtimeLength && (
                 <p className='details__runtime'>
                   Runtime: <span>{runtimeLength}</span>
                 </p>
               )}
+
               {overview && (
                 <p className='details__overview'>
                   <span>Overview:</span> <br />

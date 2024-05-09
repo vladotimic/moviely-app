@@ -1,15 +1,12 @@
-import { useEffect, lazy, Suspense } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppContext } from '@/context';
 import { ILocationState } from '@/types';
-import Loader from '@/components/Loader';
-import Pagination from '@/components/Pagination';
+import { HomeBanner, Card, Loader, Pagination } from '@/components';
 import './Home.css';
 
-const HomeBanner = lazy(() => import('@/components/HomeBanner'));
-const Card = lazy(() => import('@/components/Card'));
-
-export default function Home() {
+export default function HomePage() {
+  const navigate = useNavigate();
   const location = useLocation();
   const state = location.state as ILocationState;
 
@@ -50,11 +47,16 @@ export default function Home() {
     loadTopRatedData,
   ]);
 
+  const handlePageChange = (page: number) => {
+    navigate('', { state: null, replace: true });
+    setPage(page);
+  };
+
   return (
-    <Suspense fallback={<Loader />}>
+    <>
       <HomeBanner />
 
-      <section
+      <main
         className='container card-list__section card-grid__container'
         style={{
           ...(loading && {
@@ -99,10 +101,10 @@ export default function Home() {
           <Pagination
             currentPage={currentPage}
             pageSize={pageSize}
-            setPage={setPage}
+            setPage={handlePageChange}
           />
         </div>
-      </section>
-    </Suspense>
+      </main>
+    </>
   );
 }

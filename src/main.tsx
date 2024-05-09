@@ -7,14 +7,14 @@ import '@/styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AppContextProvider>
+    <AppContextProvider>
+      <BrowserRouter>
         <Routes>
           <Route path='/' index element={<Home />} />
           <Route path='/details/:type/:id' element={<Details />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-      </AppContextProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AppContextProvider>
   </React.StrictMode>,
 );

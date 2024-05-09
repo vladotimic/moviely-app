@@ -13,9 +13,11 @@ const customRender = (
 ) => {
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (
-      <MemoryRouter initialEntries={options?.initialEntries ?? ['/']}>
-        <AppContextProvider>{children}</AppContextProvider>;
-      </MemoryRouter>
+      <AppContextProvider>
+        <MemoryRouter initialEntries={options?.initialEntries ?? ['/']}>
+          {children}
+        </MemoryRouter>
+      </AppContextProvider>
     );
   }
 
